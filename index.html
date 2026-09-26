@@ -1,168 +1,211 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8" />
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-<title>Fun Landing Page</title>
-
-<style>
-
-*{
-
-margin:0;
-
-padding:0;
-
-box-sizing:border-box;
-
-font-family:Arial, sans-serif;
-
-}
-
-body{
-
-height:100vh;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-background:linear-gradient(135deg,#0f0f0f,#1f1f1f);
-
-overflow:hidden;
-
-}
-
-.container{
-
-text-align:center;
-
-}
-
-h1{
-
-font-size:3rem;
-
-margin-bottom:35px;
-
-font-weight:bold;
-
-background:linear-gradient(
-
-90deg,
-
-#ff0080,
-
-#ff8c00,
-
-#00ffd5,
-
-#7b68ee,
-
-#00ff99
-
-);
-
-background-size:300%;
-
--webkit-background-clip:text;
-
--webkit-text-fill-color:transparent;
-
-animation:glow 5s linear infinite;
-
-}
-
-@keyframes glow{
-
-0%{
-
-background-position:0% 50%;
-
-}
-
-100%{
-
-background-position:300% 50%;
-
-}
-
-}
-
-.enter-btn{
-
-padding:18px 60px;
-
-font-size:1.3rem;
-
-font-weight:bold;
-
-border:none;
-
-border-radius:14px;
-
-cursor:pointer;
-
-color:white;
-
-background:linear-gradient(135deg,#ff0080,#7b68ee);
-
-box-shadow:0 0 20px rgba(255,0,128,0.5);
-
-transition:0.25s ease;
-
-}
-
-.enter-btn:hover{
-
-transform:scale(1.08);
-
-box-shadow:0 0 30px rgba(123,104,238,0.9);
-
-}
-
-</style>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#07030f" />
+  <title>Open in Browser</title>
+
+  <style>
+    :root{
+      --bg:#07030f;
+      --text:#fff;
+      --muted:#9b8aac;
+      --accent1:#7b2cff;
+      --accent2:#d3358f;
+    }
+
+    *{box-sizing:border-box}
+
+    html,body{
+      margin:0;
+      min-height:100%;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      background:
+        radial-gradient(circle at 50% 13%,rgba(126,40,210,.28),transparent 31%),
+        radial-gradient(circle at 50% 66%,rgba(104,36,190,.14),transparent 35%),
+        var(--bg);
+      color:var(--text);
+    }
+
+    body{
+      min-height:100dvh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:max(28px,env(safe-area-inset-top)) 28px max(30px,env(safe-area-inset-bottom));
+    }
+
+    .wrap{
+      width:min(100%,560px);
+      text-align:center;
+      transform:translateY(-2vh);
+    }
+
+    .icon-box{
+      width:132px;
+      height:132px;
+      margin:0 auto 52px;
+      border:1.5px solid rgba(165,86,255,.4);
+      border-radius:32px;
+      display:grid;
+      place-items:center;
+      background:rgba(78,23,112,.12);
+      box-shadow:inset 0 0 40px rgba(123,44,255,.08),0 0 45px rgba(123,44,255,.05);
+    }
+
+    .icon-box svg{width:52px;height:52px}
+
+    h1{
+      margin:0 0 26px;
+      font-size:clamp(38px,8vw,54px);
+      line-height:1.03;
+      font-weight:800;
+      letter-spacing:-1.8px;
+    }
+
+    .gradient{
+      background:linear-gradient(90deg,#9a4dff,#ec3b93);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .desc{
+      max-width:470px;
+      margin:0 auto 58px;
+      color:var(--muted);
+      font-size:clamp(21px,4.8vw,28px);
+      line-height:1.45;
+    }
+
+    .open-btn{
+      width:100%;
+      min-height:105px;
+      border:0;
+      border-radius:24px;
+      background:linear-gradient(110deg,var(--accent1),var(--accent2));
+      color:#fff;
+      font-size:clamp(22px,5vw,28px);
+      font-weight:800;
+      letter-spacing:3px;
+      cursor:pointer;
+      box-shadow:0 12px 38px rgba(133,41,205,.30),0 0 42px rgba(123,44,255,.20);
+      transition:transform .15s ease,filter .15s ease,opacity .2s ease;
+    }
+
+    .open-btn:active{transform:scale(.985)}
+    .open-btn.loading{opacity:.82;cursor:default}
+
+    .sub{
+      margin:28px 0 0;
+      color:#aa69ef;
+      font-size:19px;
+    }
+
+    .fallback{
+      margin:58px 0 0;
+      color:#6f647a;
+      font-size:17px;
+    }
+
+    .fallback a{
+      color:#c277ff;
+      text-decoration:underline;
+      text-underline-offset:3px;
+    }
+
+    .hint{
+      display:none;
+      margin:28px auto 0;
+      max-width:470px;
+      padding:18px 20px;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:16px;
+      background:rgba(255,255,255,.04);
+      color:#b9adca;
+      font-size:15px;
+      line-height:1.5;
+    }
+
+    @media (max-width:480px){
+      body{padding-left:20px;padding-right:20px}
+      .icon-box{
+        width:110px;
+        height:110px;
+        border-radius:28px;
+        margin-bottom:42px;
+      }
+      .desc{margin-bottom:46px}
+      .open-btn{min-height:88px;border-radius:20px}
+      .fallback{margin-top:46px}
+    }
+  </style>
 </head>
+<body>
+  <main class="wrap">
+    <div class="icon-box" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 3h7v7"/>
+        <path d="M10 14L21 3"/>
+        <path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/>
+      </svg>
+    </div>
 
-<body onclick="goNext()">
+    <h1>Open in <span class="gradient">browser</span></h1>
+    <p class="desc">For the best experience of piper's l33k open this in your browser.</p>
 
-<div class="container">
+    <button class="open-btn" id="openBtn">OPEN IN BROWSER</button>
 
-<h1>Are You Ready To See The piper Files?</h1>
+    <p class="sub">Opens in Safari or Chrome</p>
 
-<button class="enter-btn" onclick="goNext()">
+    <p class="fallback">
+      Not working? <a id="fallbackLink" href="#">Tap here</a>
+    </p>
 
-Enter
+    <div class="hint" id="hint">
+      If TikTok keeps this page inside the app, tap the <strong>•••</strong> menu
+      and choose <strong>Open in browser</strong>.
+    </div>
+  </main>
 
-</button>
+  <script>
+    // ==========================================================
+    // ONLY CHANGE THIS:
+    const TARGET_URL = "https://cerulean-biscochitos-8ad8b8.netlify.app/";
+    // ==========================================================
 
-</div>
+    const button = document.getElementById("openBtn");
+    const fallback = document.getElementById("fallbackLink");
+    const hint = document.getElementById("hint");
 
-<script>
+    fallback.href = TARGET_URL;
 
-function goNext(){
+    function beginHandoff() {
+      if (button.classList.contains("loading")) return;
 
-window.location.href = "https://discord.gg/pXRQrPjdY";
+      // This is the state shown AFTER the user taps the button.
+      button.classList.add("loading");
+      button.textContent = "LOADING...";
 
-}
+      setTimeout(() => {
+        // User-initiated navigation gives the browser handoff the best chance.
+        const opened = window.open(TARGET_URL, "_blank", "noopener,noreferrer");
 
-// Let keyboard users activate the page with Enter or Space too.
-document.addEventListener("keydown", function(event){
-if(event.key === "Enter" || event.key === " "){
-goNext();
-}
-});
+        if (!opened) {
+          window.location.assign(TARGET_URL);
+        }
+      }, 250);
 
-</script>
+      // If the in-app browser refuses to hand off, reveal manual instructions.
+      setTimeout(() => {
+        hint.style.display = "block";
+        button.classList.remove("loading");
+        button.textContent = "OPEN IN BROWSER";
+      }, 1800);
+    }
 
+    button.addEventListener("click", beginHandoff);
+  </script>
 </body>
-
 </html>
