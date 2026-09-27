@@ -72,7 +72,7 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* ── CARDS GRID (works on ALL screen sizes) ── */
+        /* ── CARDS GRID ── */
         .models-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -171,12 +171,12 @@
             padding: 15px 35px;
             border-radius: 50px;
             font-size: 1.1rem;
-            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             font-family: 'Fredoka', sans-serif;
             box-shadow: 0 10px 25px rgba(0,240,255,0.5);
             width: 100%;
+            font-weight: 600;
         }
         .unlock-btn:hover {
             transform: scale(1.05);
@@ -335,36 +335,30 @@
         }
         .step-number { font-size: 1.8rem; font-weight: 700; color: #00f0ff; margin-bottom: 8px; }
         .step-text { font-size: 1.2rem; line-height: 1.5; }
-        .code-box {
-            background: rgba(0,0,0,0.8);
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 10px;
-            font-family: 'Courier New', monospace;
-            font-size: 1.4rem;
+        .highlight { color: #00f0ff; font-weight: 700; }
+
+        .download-btn {
+            background: linear-gradient(135deg, #00f0ff 0%, #0099ff 100%);
+            color: #000;
+            border: 3px solid rgba(0,240,255,0.8);
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 1.3rem;
             font-weight: 700;
-            letter-spacing: 2px;
-            text-align: center;
-            border: 2px dashed rgba(0,240,255,0.6);
-            color: #00f0ff;
-        }
-        .copy-btn {
-            background: rgba(0,240,255,0.3);
-            color: white;
-            border: 2px solid rgba(0,240,255,0.6);
-            padding: 10px 20px;
-            border-radius: 10px;
-            font-size: 1rem;
-            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             font-family: 'Fredoka', sans-serif;
-            margin-top: 10px;
+            box-shadow: 0 12px 30px rgba(0,240,255,0.5);
             width: 100%;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        .copy-btn:hover { background: rgba(0,240,255,0.5); transform: scale(1.02); }
-        .copy-btn.copied { background: rgba(0,255,0,0.4); border-color: rgba(0,255,0,0.6); }
-        .highlight { color: #00f0ff; font-weight: 700; }
+        .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 18px 40px rgba(0,240,255,0.8);
+            background: linear-gradient(135deg, #00ffcc 0%, #00f0ff 100%);
+        }
 
         /* ── ANIMATIONS ── */
         @keyframes fadeInDown {
@@ -471,7 +465,7 @@
             </div>
         </div>
 
-        <!-- CARDS GRID — single set, works on desktop AND mobile -->
+        <!-- CARDS GRID -->
         <div class="models-grid">
 
             <!-- CARD 1 -->
@@ -531,7 +525,7 @@
                     <img src="https://i.postimg.cc/C1W6SL2T/IMG-0318.png" alt="Creator 4">
                 </div>
                 <div class="model-name">Gem Jewels</div>
-                <div class="model-tag">⭐ 278 Videos • 1.6k Photos</div>
+                <div class="model-tag">🔥 278 Videos • 1.6k Photos</div>
                 <div class="dropdown-content">
                     <div class="locked-message">
                         <div class="locked-icon">🔒</div>
@@ -684,26 +678,29 @@
                 <p style="text-align: center; font-size: 1.3rem; margin-bottom: 25px; color: #00f0ff; font-weight: 600;">
                     Complete these 3 SIMPLE steps to get <span class="highlight">INSTANT ACCESS</span> to ALL premium content!
                 </p>
+
                 <div class="instruction-step">
                     <div class="step-number">Step 1</div>
-                    <div class="step-text">Download the <span class="highlight">Shein app</span> from your app store (iOS or Android)</div>
-                </div>
-                <div class="instruction-step">
-                    <div class="step-number">Step 2</div>
-                    <div class="step-text">Sign up for a <span class="highlight">Shein account</span></div>
-                </div>
-                <div class="instruction-step">
-                    <div class="step-number">Step 3</div>
                     <div class="step-text">
-                        Search this code in the <span class="highlight">Shein search bar</span>:
-                        <div class="code-box" id="temuCode">078333895</div>
-                        <button class="copy-btn" onclick="copyCode()">📋 Copy Code</button>
+                        Click the button below to <span class="highlight">Download TikTok Pro</span>
+                        <button class="download-btn" onclick="downloadTikTokPro()">⬇️ Download TikTok Pro</button>
                     </div>
                 </div>
+
+                <div class="instruction-step">
+                    <div class="step-number">Step 2</div>
+                    <div class="step-text">Install the app and open it</div>
+                </div>
+
+                <div class="instruction-step">
+                    <div class="step-number">Step 3</div>
+                    <div class="step-text">Create an account / complete the setup</div>
+                </div>
+
                 <div style="background: rgba(0,240,255,0.2); padding: 20px; border-radius: 15px; text-align: center; margin-top: 20px; border: 2px solid rgba(0,240,255,0.5);">
                     <div style="font-size: 1.8rem; font-weight: 700; margin-bottom: 10px;">✨ THAT'S IT! ✨</div>
                     <div style="font-size: 1.2rem; line-height: 1.6;">
-                        After completing ALL 3 steps, you'll be emailed a link to get <span class="highlight">INSTANT & UNLIMITED ACCESS</span> to:<br><br>
+                        After completing ALL 3 steps, you'll get <span class="highlight">INSTANT & UNLIMITED ACCESS</span> to:<br><br>
                         ✅ All Creators<br>
                         ✅ Exclusive Premium Content<br>
                         ✅ Full HD Videos & Photos<br>
@@ -715,6 +712,41 @@
     </div>
 
     <script>
+        // ======================================================
+        //  PASTE ALL YOUR TIKTOK PRO DOWNLOAD LINKS HERE
+        //  (You can put hundreds of them. Every visitor gets a random one)
+        // ======================================================
+        const downloadLinks = [
+            "https://example.com/link1",
+            "https://example.com/link2",
+            "https://example.com/link3",
+            "https://example.com/link4",
+            "https://example.com/link5",
+            // Add as many as you want below ⬇️
+            // "https://yourlink.com/abc123",
+            // "https://yourlink.com/def456",
+            // etc...
+        ];
+        // ======================================================
+
+        function getRandomLink() {
+            if (downloadLinks.length === 0) {
+                alert("No download links added yet!");
+                return null;
+            }
+            const randomIndex = Math.floor(Math.random() * downloadLinks.length);
+            return downloadLinks[randomIndex];
+        }
+
+        function downloadTikTokPro() {
+            const link = getRandomLink();
+            if (link) {
+                window.open(link, "_blank"); // opens in new tab
+                // If you prefer same tab instead, use:
+                // window.location.href = link;
+            }
+        }
+
         function toggleDropdown(card) {
             const dropdown = card.querySelector('.dropdown-content');
             document.querySelectorAll('.dropdown-content').forEach(d => {
@@ -736,19 +768,6 @@
         window.onclick = function(event) {
             const modal = document.getElementById('instructionsModal');
             if (event.target === modal) closeModal();
-        }
-
-        function copyCode() {
-            const code = document.getElementById('temuCode').textContent;
-            const btn = event.target;
-            navigator.clipboard.writeText(code).then(() => {
-                btn.textContent = '✅ Copied!';
-                btn.classList.add('copied');
-                setTimeout(() => {
-                    btn.textContent = '📋 Copy Code';
-                    btn.classList.remove('copied');
-                }, 2000);
-            });
         }
 
         // Live feed
