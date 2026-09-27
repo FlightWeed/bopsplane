@@ -1,88 +1,787 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pipers Files</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Baddie Drop – Exclusive Access</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    body {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #0a0a0a;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-      color: #fff;
-      overflow: hidden;
-    }
+        body {
+            font-family: 'Fredoka', sans-serif;
+            background: linear-gradient(135deg, #0f0f1f 0%, #001a1a 50%, #000000 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #fff;
+        }
 
-    .container {
-      text-align: center;
-      padding: 2rem;
-      max-width: 600px;
-    }
+        .container { max-width: 1400px; margin: 0 auto; }
 
-    h1 {
-      font-size: clamp(1.8rem, 5vw, 2.8rem);
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      margin-bottom: 2.5rem;
-      line-height: 1.3;
-      text-shadow: 0 0 40px rgba(255, 255, 255, 0.15);
-    }
+        /* ── HEADER ── */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeInDown 0.8s ease;
+        }
+        header h1 {
+            font-size: 5.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow:
+                5px 5px 0px rgba(0,0,0,0.4),
+                -2px -2px 0px rgba(0,240,255,0.3),
+                0 0 40px rgba(0,240,255,0.6),
+                0 0 80px rgba(0,240,255,0.4);
+            letter-spacing: 8px;
+            text-transform: lowercase;
+            filter: drop-shadow(0 10px 20px rgba(0,240,255,0.5));
+        }
+        header p { font-size: 1.3rem; opacity: 0.95; font-weight: 400; }
 
-    .btn {
-      display: inline-block;
-      padding: 1rem 2.5rem;
-      font-size: 1.15rem;
-      font-weight: 600;
-      color: #0a0a0a;
-      background: #fff;
-      border: none;
-      border-radius: 8px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-      box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
-    }
+        /* ── SCROLLING BANNER ── */
+        .banner-container {
+            overflow: hidden;
+            background: rgba(0,240,255,0.1);
+            border-top: 2px solid rgba(0,240,255,0.3);
+            border-bottom: 2px solid rgba(0,240,255,0.3);
+            margin-bottom: 40px;
+            padding: 15px 0;
+            margin-left: -20px;
+            margin-right: -20px;
+            width: calc(100% + 40px);
+        }
+        .banner-scroll {
+            display: flex;
+            gap: 30px;
+            animation: scroll 30s linear infinite;
+            width: fit-content;
+        }
+        .banner-item {
+            font-size: 1.1rem;
+            font-weight: 600;
+            white-space: nowrap;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(0,240,255,0.5);
+        }
+        @keyframes scroll {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
 
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(255, 255, 255, 0.25);
-      background: #f0f0f0;
-    }
+        /* ── CARDS GRID (works on ALL screen sizes) ── */
+        .models-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
 
-    .btn:active {
-      transform: translateY(0);
-    }
+        .model-card {
+            background: rgba(20,20,30,0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid rgba(0,240,255,0.3);
+            animation: fadeInUp 0.6s ease backwards;
+        }
+        .model-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(0,240,255,0.8);
+            box-shadow: 0 20px 40px rgba(0,240,255,0.5);
+        }
+        .model-card:nth-child(1) { animation-delay: 0.1s; }
+        .model-card:nth-child(2) { animation-delay: 0.2s; }
+        .model-card:nth-child(3) { animation-delay: 0.3s; }
+        .model-card:nth-child(4) { animation-delay: 0.4s; }
+        .model-card:nth-child(5) { animation-delay: 0.5s; }
+        .model-card:nth-child(6) { animation-delay: 0.6s; }
+        .model-card:nth-child(7) { animation-delay: 0.7s; }
+        .model-card:nth-child(8) { animation-delay: 0.8s; }
 
-    /* subtle background glow */
-    body::before {
-      content: '';
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-      z-index: -1;
-    }
-  </style>
+        .model-image {
+            width: 100%;
+            height: 300px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            border: 3px solid rgba(0,240,255,0.5);
+            background: linear-gradient(135deg, #00f0ff 0%, #006699 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            overflow: hidden;
+            position: relative;
+        }
+        .model-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        .model-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        .model-tag {
+            text-align: center;
+            font-size: 1rem;
+            opacity: 0.9;
+            background: rgba(0,240,255,0.2);
+            padding: 8px 16px;
+            border-radius: 50px;
+            display: inline-block;
+            width: 100%;
+            border: 1px solid rgba(0,240,255,0.4);
+        }
+
+        /* ── DROPDOWN ── */
+        .dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, margin-top 0.4s ease;
+            margin-top: 0;
+        }
+        .dropdown-content.active {
+            max-height: 400px;
+            margin-top: 20px;
+        }
+        .locked-message {
+            background: rgba(10,20,20,0.8);
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px dashed rgba(0,240,255,0.5);
+        }
+        .locked-icon { font-size: 3rem; margin-bottom: 15px; }
+        .locked-message h3 { font-size: 1.5rem; margin-bottom: 15px; font-weight: 600; }
+        .locked-message p { margin-bottom: 20px; font-size: 1.1rem; opacity: 0.95; }
+
+        .unlock-btn {
+            background: linear-gradient(135deg, #00f0ff 0%, #0099ff 100%);
+            color: #000;
+            border: 2px solid rgba(0,240,255,0.8);
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Fredoka', sans-serif;
+            box-shadow: 0 10px 25px rgba(0,240,255,0.5);
+            width: 100%;
+        }
+        .unlock-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(0,240,255,0.8);
+            background: linear-gradient(135deg, #00ffcc 0%, #00f0ff 100%);
+        }
+
+        /* ── CTA CARD ── */
+        .cta-card {
+            background: rgba(0,240,255,0.15) !important;
+            border: 3px solid rgba(0,240,255,0.6) !important;
+        }
+        .cta-card:hover {
+            background: rgba(0,240,255,0.25) !important;
+            border-color: rgba(0,240,255,0.9) !important;
+            box-shadow: 0 20px 40px rgba(0,240,255,0.6) !important;
+        }
+        .cta-image {
+            background: linear-gradient(135deg, #00f0ff 0%, #0099ff 100%) !important;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            color: #000;
+        }
+
+        /* ── CLAIMS SECTION ── */
+        .claims-section {
+            background: rgba(0,20,20,0.8);
+            border: 2px solid rgba(0,240,255,0.4);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+        .claims-header { text-align: center; margin-bottom: 25px; }
+        .claims-count {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #00f0ff;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(0,240,255,0.5);
+        }
+        .claims-text { font-size: 1.2rem; color: #fff; opacity: 0.9; }
+
+        .live-feed { max-height: 300px; overflow: hidden; position: relative; }
+        .feed-item {
+            background: rgba(0,240,255,0.1);
+            border-left: 3px solid #00f0ff;
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: slideIn 0.5s ease;
+        }
+        .feed-icon { font-size: 1.2rem; }
+        .feed-name { font-weight: 600; color: #00f0ff; }
+        .feed-time { margin-left: auto; font-size: 0.9rem; opacity: 0.7; }
+
+        .access-now-btn {
+            background: linear-gradient(135deg, #00f0ff 0%, #0099ff 100%);
+            color: #000;
+            border: 3px solid rgba(0,240,255,0.8);
+            padding: 18px 50px;
+            border-radius: 50px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Fredoka', sans-serif;
+            box-shadow: 0 15px 35px rgba(0,240,255,0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .access-now-btn:hover {
+            transform: scale(1.08) translateY(-3px);
+            box-shadow: 0 20px 45px rgba(0,240,255,0.8);
+            background: linear-gradient(135deg, #00ffcc 0%, #00f0ff 100%);
+        }
+
+        /* ── MODAL ── */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.95);
+            animation: fadeIn 0.3s ease;
+        }
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background: linear-gradient(135deg, #001a1a 0%, #000000 100%);
+            padding: 40px;
+            border-radius: 30px;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            animation: scaleIn 0.4s ease;
+            border: 4px solid rgba(0,240,255,0.6);
+            box-shadow: 0 25px 50px rgba(0,240,255,0.4);
+        }
+        .close-btn {
+            position: absolute;
+            top: 15px; right: 20px;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            background: rgba(0,240,255,0.3);
+            width: 45px; height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(0,240,255,0.5);
+        }
+        .close-btn:hover {
+            background: rgba(0,240,255,0.6);
+            transform: rotate(90deg);
+        }
+        .modal-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 700;
+        }
+        .instructions {
+            background: rgba(20,30,30,0.6);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid rgba(0,240,255,0.4);
+        }
+        .instruction-step {
+            background: rgba(30,40,40,0.6);
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 15px;
+            border-left: 5px solid #00f0ff;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,240,255,0.3);
+        }
+        .instruction-step:hover {
+            background: rgba(50,60,60,0.8);
+            transform: translateX(5px);
+        }
+        .step-number { font-size: 1.8rem; font-weight: 700; color: #00f0ff; margin-bottom: 8px; }
+        .step-text { font-size: 1.2rem; line-height: 1.5; }
+        .code-box {
+            background: rgba(0,0,0,0.8);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-align: center;
+            border: 2px dashed rgba(0,240,255,0.6);
+            color: #00f0ff;
+        }
+        .copy-btn {
+            background: rgba(0,240,255,0.3);
+            color: white;
+            border: 2px solid rgba(0,240,255,0.6);
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Fredoka', sans-serif;
+            margin-top: 10px;
+            width: 100%;
+        }
+        .copy-btn:hover { background: rgba(0,240,255,0.5); transform: scale(1.02); }
+        .copy-btn.copied { background: rgba(0,255,0,0.4); border-color: rgba(0,255,0,0.6); }
+        .highlight { color: #00f0ff; font-weight: 700; }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; } to { opacity: 1; }
+        }
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to   { opacity: 1; transform: scale(1); }
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            body { padding: 15px; }
+            .banner-container {
+                margin-left: -15px;
+                margin-right: -15px;
+                width: calc(100% + 30px);
+            }
+            header h1 { font-size: 3.5rem; letter-spacing: 4px; }
+            header p { font-size: 1rem; }
+            .models-grid { grid-template-columns: 1fr 1fr; gap: 15px; }
+            .model-image { height: 200px; }
+            .model-name { font-size: 1.3rem; }
+            .modal-content { padding: 30px 20px; width: 95%; max-height: 90vh; overflow-y: auto; }
+            .modal-content h2 { font-size: 2rem; }
+            .access-now-btn { width: 100%; font-size: 1.2rem; }
+        }
+        @media (max-width: 480px) {
+            header h1 { font-size: 2.8rem; letter-spacing: 3px; }
+            .models-grid { grid-template-columns: 1fr; }
+            .model-image { height: 280px; }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Are You Ready To See Pipers F!les</h1>
-    <a href="https://discord.gg/pXRQrPjdY" class="btn" target="_blank" rel="noopener noreferrer">
-      Enter Now
-    </a>
-  </div>
+    <div class="container">
+
+        <!-- HEADER -->
+        <header>
+            <h1>Every Bop</h1>
+            <p>Complete the simple steps below to unlock <strong>ALL THE LEAKS</strong> instantly!</p>
+        </header>
+
+        <!-- SCROLLING BANNER -->
+        <div class="banner-container">
+            <div class="banner-scroll">
+             <span class="banner-item">🔥 Sophie Rain</span>
+                <span class="banner-item">💦 Squirting</span>
+                <span class="banner-item">⭐ Brooke Monk</span>
+                <span class="banner-item">🍑 Ass</span>
+                <span class="banner-item">🌟 Piper Rockelle</span>
+                <span class="banner-item">💋 Boobs</span>
+                <span class="banner-item">✨ Demitra Kalogera</span>
+                <span class="banner-item">🎬 Video</span>
+                <span class="banner-item">💎 Aishah Sofey</span>
+                <span class="banner-item">🔞 Anal</span>
+                <span class="banner-item">🌸 Jenna Ortega</span>
+                <span class="banner-item">😈 Goth</span>
+                <span class="banner-item">🎀 Madelyn Cline</span>
+                <span class="banner-item">💕 Pussy</span>
+                <span class="banner-item">🌺 Maddison Beer</span>
+                <span class="banner-item">🎥 Amateur</span>
+                <span class="banner-item">🌹 Latina</span>
+                <span class="banner-item">💧 Cumshot</span>
+                <span class="banner-item">🎯 Riding</span>
+                <span class="banner-item">🚿 Shower</span>
+                <span class="banner-item">⚡ Hardcore</span>
+                <span class="banner-item">🌙 Anime</span>
+                <!-- Duplicate for seamless loop -->
+                <span class="banner-item">🔥 Sophie Rain</span>
+                <span class="banner-item">💦 Squirting</span>
+                <span class="banner-item">⭐ Brooke Monk</span>
+                <span class="banner-item">🍑 Ass</span>
+                <span class="banner-item">🌟 Piper Rockelle</span>
+                <span class="banner-item">💋 Boobs</span>
+                <span class="banner-item">✨ Demitra Kalogera</span>
+                <span class="banner-item">🎬 Video</span>
+                <span class="banner-item">💎 Aishah Sofey</span>
+                <span class="banner-item">🔞 Anal</span>
+                <span class="banner-item">🌸 Jenna Ortega</span>
+                <span class="banner-item">😈 Goth</span>
+                <span class="banner-item">🎀 Madelyn Cline</span>
+                <span class="banner-item">💕 Pussy</span>
+                <span class="banner-item">🌺 Maddison Beer</span>
+                <span class="banner-item">🎥 Amateur</span>
+                <span class="banner-item">🌹 Latina</span>
+                <span class="banner-item">💧 Cumshot</span>
+                <span class="banner-item">🎯 Riding</span>
+                <span class="banner-item">🚿 Shower</span>
+                <span class="banner-item">⚡ Hardcore</span>
+                <span class="banner-item">🌙 Anime</span>
+            </div>
+        </div>
+
+        <!-- CARDS GRID — single set, works on desktop AND mobile -->
+        <div class="models-grid">
+
+            <!-- CARD 1 -->
+            <div class="model-card" onclick="toggleDropdown(this)">
+                <div class="model-image">
+                    <img src="https://i.postimg.cc/TwZHfYsf/16caez.png" alt="Creator 1">
+                </div>
+                <div class="model-name">pIPER Rockelle</div>
+                <div class="model-tag">🔥 247 Videos • 1.8k Photos</div>
+                <div class="dropdown-content">
+                    <div class="locked-message">
+                        <div class="locked-icon">🔒</div>
+                        <h3>🔥 ALL CONTENT LOCKED 🔥</h3>
+                        <p>Complete 3 simple steps to unlock <strong>ALL THE LEAKS</strong> + exclusive premium content!</p>
+                        <button class="unlock-btn" onclick="event.stopPropagation(); openModal()">🚀 Unlock ALL Content Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="model-card" onclick="toggleDropdown(this)">
+                <div class="model-image">
+                    <img src="https://i.postimg.cc/mrXXWRM7/IMG-0937.jpg" alt="Creator 2">
+                </div>
+                <div class="model-name">Summyah</div>
+                <div class="model-tag">⭐ 334 Videos • 2.9k Photos</div>
+                <div class="dropdown-content">
+                    <div class="locked-message">
+                        <div class="locked-icon">🔒</div>
+                        <h3>🔥 ALL CONTENT LOCKED 🔥</h3>
+                        <p>Complete 3 simple steps to unlock <strong>ALL THE LEAKS</strong> + exclusive premium content!</p>
+                        <button class="unlock-btn" onclick="event.stopPropagation(); openModal()">🚀 Unlock ALL Content Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 3 -->
+            <div class="model-card" onclick="toggleDropdown(this)">
+                <div class="model-image">
+                    <img src="https://i.postimg.cc/qR9Z4MFH/ia98wl.png" alt="Creator 3">
+                </div>
+                <div class="model-name">Aishah Sofey</div>
+                <div class="model-tag">⭐ 189 Videos • 2.3k Photos</div>
+                <div class="dropdown-content">
+                    <div class="locked-message">
+                        <div class="locked-icon">🔒</div>
+                        <h3>🔥 ALL CONTENT LOCKED 🔥</h3>
+                        <p>Complete 3 simple steps to unlock <strong>ALL THE LEAKS</strong> + exclusive premium content!</p>
+                        <button class="unlock-btn" onclick="event.stopPropagation(); openModal()">🚀 Unlock ALL Content Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 4 -->
+            <div class="model-card" onclick="toggleDropdown(this)">
+                <div class="model-image">
+                    <img src="https://i.postimg.cc/C1W6SL2T/IMG-0318.png" alt="Creator 4">
+                </div>
+                <div class="model-name">Gem Jewels</div>
+                <div class="model-tag">⭐ 278 Videos • 1.6k Photos</div>
+                <div class="dropdown-content">
+                    <div class="locked-message">
+                        <div class="locked-icon">🔒</div>
+                        <h3>🔥 ALL CONTENT LOCKED 🔥</h3>
+                        <p>Complete 3 simple steps to unlock <strong>ALL THE LEAKS</strong> + exclusive premium content!</p>
+                        <button class="unlock-btn" onclick="event.stopPropagation(); openModal()">🚀 Unlock ALL Content Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 5 -->
+            <div class="model-card" onclick="toggleDropdown(this)">
+                <div class="model-image">
+                    <img src="https://i.postimg.cc/mD06B25v/IMG-0319.jpg" alt="Creator 5">
+                </div>
+                <div class="model-name">Lexi Soriya</div>
+                <div class="model-tag">🔥 195 Videos • 2.7k Photos</div>
+                <div class="dropdown-content">
+                    <div class="locked-message">
+                        <div class="locked-icon">🔒</div>
+                        <h3>🔥 ALL CONTENT LOCKED 🔥</h3>
+                        <p>Complete 3 simple steps to unlock <strong>ALL THE LEAKS</strong> + exclusive premium content!</p>
+                        <button class="unlock-btn" onclick="event.stopPropagation(); openModal()">🚀 Unlock ALL Content Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 6 -->
+            <div class="model-card" onclick="toggleDropdown(this)">
+                <div class="model-image">
+                    <img src="https://i.postimg.cc/T14Gh5Y0/IMG-0795.jpg" alt="Creator 6">
+                </div>
+                <div class="model-name">MegTheeStallion</div>
+                <div class="model-tag">⭐ 156 Videos • 987 Photos</div>
+                <div class="dropdown-content">
+                    <div class="locked-message">
+                        <div class="locked-icon">🔒</div>
+                        <h3>🔥 ALL CONTENT LOCKED 🔥</h3>
+                        <p>Complete 3 simple steps to unlock <strong>ALL THE LEAKS</strong> + exclusive premium content!</p>
+                        <button class="unlock-btn" onclick="event.stopPropagation(); openModal()">🚀 Unlock ALL Content Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 7 -->
+            <div class="model-card" onclick="toggleDropdown(this)">
+                <div class="model-image">
+                    <img src="https://i.postimg.cc/MThrqKFL/w07a5v.png" alt="Creator 7">
+                </div>
+                <div class="model-name">Madelyn Cline</div>
+                <div class="model-tag">🔥 423 Videos • 3.1k Photos</div>
+                <div class="dropdown-content">
+                    <div class="locked-message">
+                        <div class="locked-icon">🔒</div>
+                        <h3>🔥 ALL CONTENT LOCKED 🔥</h3>
+                        <p>Complete 3 simple steps to unlock <strong>ALL THE LEAKS</strong> + exclusive premium content!</p>
+                        <button class="unlock-btn" onclick="event.stopPropagation(); openModal()">🚀 Unlock ALL Content Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 8 -->
+            <div class="model-card" onclick="toggleDropdown(this)">
+                <div class="model-image">
+                    <img src="https://i.postimg.cc/hjH3cPYg/Sophie-Rain-120624-tout-74543a5ddcad4e3bafb9f76fd5691b68.jpg" alt="Creator 8">
+                </div>
+                <div class="model-name">Sophie Rain</div>
+                <div class="model-tag">⭐ 9 Videos • 23 Photos</div>
+                <div class="dropdown-content">
+                    <div class="locked-message">
+                        <div class="locked-icon">🔒</div>
+                        <h3>🔥 ALL CONTENT LOCKED 🔥</h3>
+                        <p>Complete 3 simple steps to unlock <strong>ALL THE LEAKS</strong> + exclusive premium content!</p>
+                        <button class="unlock-btn" onclick="event.stopPropagation(); openModal()">🚀 Unlock ALL Content Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA CARD -->
+            <div class="model-card cta-card" onclick="toggleDropdown(this)">
+                <div class="model-image cta-image">
+                    <div style="font-size: 3rem; margin-bottom: 10px;">🔓</div>
+                    <div style="font-size: 1.5rem; font-weight: 700; line-height: 1.3; color:#000;">GET ACCESS TO EVERYTHING</div>
+                </div>
+                <div class="model-name" style="font-size: 1.6rem;">ALL THE LEAKS</div>
+                <div class="model-tag" style="background: rgba(0,240,255,0.4); border-color: rgba(0,240,255,0.8);">🎯 UNLOCK NOW</div>
+                <div class="dropdown-content">
+                    <div class="locked-message">
+                        <div class="locked-icon">🔓</div>
+                        <h3 style="color:#00f0ff;">🎉 GET EVERYTHING NOW! 🎉</h3>
+                        <p style="font-size: 1.2rem;">Complete 3 simple steps to unlock <strong>ALL MODELS + ALL LEAKS</strong> instantly!</p>
+                        <button class="unlock-btn" onclick="event.stopPropagation(); openModal()">🚀 Unlock ALL Content Now</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- CLAIMS SECTION -->
+        <div class="claims-section">
+            <div class="claims-header">
+                <div class="claims-count">🔥 14,838+ People</div>
+                <div class="claims-text">Have Already Claimed Access</div>
+            </div>
+            <div class="live-feed" id="liveFeed">
+                <div class="feed-item">
+                    <span class="feed-icon">✅</span>
+                    <span class="feed-name">sa***</span>
+                    <span>claimed access</span>
+                    <span class="feed-time">1 min ago</span>
+                </div>
+                <div class="feed-item">
+                    <span class="feed-icon">✅</span>
+                    <span class="feed-name">jo**</span>
+                    <span>claimed access</span>
+                    <span class="feed-time">3 mins ago</span>
+                </div>
+                <div class="feed-item">
+                    <span class="feed-icon">✅</span>
+                    <span class="feed-name">em***</span>
+                    <span>claimed access</span>
+                    <span class="feed-time">6 mins ago</span>
+                </div>
+                <div class="feed-item">
+                    <span class="feed-icon">✅</span>
+                    <span class="feed-name">mi****</span>
+                    <span>claimed access</span>
+                    <span class="feed-time">7 mins ago</span>
+                </div>
+                <div class="feed-item">
+                    <span class="feed-icon">✅</span>
+                    <span class="feed-name">al**</span>
+                    <span>claimed access</span>
+                    <span class="feed-time">9 mins ago</span>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="access-now-btn" onclick="openModal()">🔓 GET ACCESS NOW</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- MODAL -->
+    <div id="instructionsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">×</span>
+            <h2>🔓 UNLOCK ALL LEAKS</h2>
+            <div class="instructions">
+                <p style="text-align: center; font-size: 1.3rem; margin-bottom: 25px; color: #00f0ff; font-weight: 600;">
+                    Complete these 3 SIMPLE steps to get <span class="highlight">INSTANT ACCESS</span> to ALL premium content!
+                </p>
+                <div class="instruction-step">
+                    <div class="step-number">Step 1</div>
+                    <div class="step-text">Download the <span class="highlight">Shein app</span> from your app store (iOS or Android)</div>
+                </div>
+                <div class="instruction-step">
+                    <div class="step-number">Step 2</div>
+                    <div class="step-text">Sign up for a <span class="highlight">Shein account</span></div>
+                </div>
+                <div class="instruction-step">
+                    <div class="step-number">Step 3</div>
+                    <div class="step-text">
+                        Search this code in the <span class="highlight">Shein search bar</span>:
+                        <div class="code-box" id="temuCode">078333895</div>
+                        <button class="copy-btn" onclick="copyCode()">📋 Copy Code</button>
+                    </div>
+                </div>
+                <div style="background: rgba(0,240,255,0.2); padding: 20px; border-radius: 15px; text-align: center; margin-top: 20px; border: 2px solid rgba(0,240,255,0.5);">
+                    <div style="font-size: 1.8rem; font-weight: 700; margin-bottom: 10px;">✨ THAT'S IT! ✨</div>
+                    <div style="font-size: 1.2rem; line-height: 1.6;">
+                        After completing ALL 3 steps, you'll be emailed a link to get <span class="highlight">INSTANT & UNLIMITED ACCESS</span> to:<br><br>
+                        ✅ All Creators<br>
+                        ✅ Exclusive Premium Content<br>
+                        ✅ Full HD Videos & Photos<br>
+                        ✅ No Time Limits!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleDropdown(card) {
+            const dropdown = card.querySelector('.dropdown-content');
+            document.querySelectorAll('.dropdown-content').forEach(d => {
+                if (d !== dropdown) d.classList.remove('active');
+            });
+            dropdown.classList.toggle('active');
+        }
+
+        function openModal() {
+            document.getElementById('instructionsModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('instructionsModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('instructionsModal');
+            if (event.target === modal) closeModal();
+        }
+
+        function copyCode() {
+            const code = document.getElementById('temuCode').textContent;
+            const btn = event.target;
+            navigator.clipboard.writeText(code).then(() => {
+                btn.textContent = '✅ Copied!';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.textContent = '📋 Copy Code';
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        // Live feed
+        const names = ['jo**','sa***','em***','mi****','al**','ch****','da***','br**','ka****','ty**','li***','ma**','ro****','ja***','ni**','be***','ca****','de**','el***','fr****'];
+        const liveFeed = document.getElementById('liveFeed');
+        let claimCount = 14838;
+
+        function addNewClaim() {
+            const randomName = names[Math.floor(Math.random() * names.length)];
+            const newItem = document.createElement('div');
+            newItem.className = 'feed-item';
+            newItem.innerHTML = `
+                <span class="feed-icon">✅</span>
+                <span class="feed-name">${randomName}</span>
+                <span>claimed access</span>
+                <span class="feed-time">just now</span>
+            `;
+            liveFeed.insertBefore(newItem, liveFeed.firstChild);
+            claimCount++;
+            document.querySelector('.claims-count').textContent = `🔥 ${claimCount.toLocaleString()}+ People`;
+            if (liveFeed.children.length > 8) liveFeed.removeChild(liveFeed.lastChild);
+            updateTimes();
+        }
+
+        function updateTimes() {
+            const items = liveFeed.querySelectorAll('.feed-item');
+            const times = ['just now','1 min ago','3 mins ago','6 mins ago','7 mins ago','9 mins ago'];
+            items.forEach((item, i) => {
+                item.querySelector('.feed-time').textContent = i < times.length ? times[i] : `${i + 8} mins ago`;
+            });
+        }
+
+        setInterval(addNewClaim, Math.random() * 7000 + 8000);
+    </script>
 </body>
 </html>
