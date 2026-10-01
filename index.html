@@ -1381,8 +1381,7 @@
         // ============================================================
         // TIKTOK PRO LINK POOL
         // Add or remove as many TikTok Pro links as you want here.
-        // Each visitor gets ONE random link and keeps that same link
-        // on reloads in the same browser.
+        // A random link is selected EVERY TIME the page is opened.
         // ============================================================
         const EVENT_LINKS = [
             'https://pro.tiktok.com/t/ZT9DFwv7saYwg-4Ki9p/',
@@ -1392,9 +1391,7 @@
             'https://pro.tiktok.com/t/ZP9DFKToXJGxa-vSVTD/'
         ];
 
-        const EVENT_LINK_STORAGE_KEY = 'bopsplane_tiktok_pro_link_v2';
-
-        function getAssignedEventLink() {
+        function assignEventLink() {
             var validLinks = EVENT_LINKS
                 .map(function(link) { return String(link).trim(); })
                 .filter(function(link) {
@@ -1403,36 +1400,13 @@
 
             if (!validLinks.length) {
                 console.error('EVENT_LINKS is empty or contains no valid TikTok Pro links.');
-                return null;
+                return;
             }
 
-            var assignedLink = null;
-
-            try {
-                assignedLink = localStorage.getItem(EVENT_LINK_STORAGE_KEY);
-            } catch (e) {
-                console.warn('localStorage unavailable; using a temporary random assignment.');
-            }
-
-            // Reuse the saved link when it is still in EVENT_LINKS.
-            if (!assignedLink || validLinks.indexOf(assignedLink) === -1) {
-                assignedLink = validLinks[Math.floor(Math.random() * validLinks.length)];
-
-                try {
-                    localStorage.setItem(EVENT_LINK_STORAGE_KEY, assignedLink);
-                } catch (e) {
-                    // Continue with the in-memory assignment.
-                }
-            }
-
-            return assignedLink;
-        }
-
-        function assignEventLink() {
+            var assignedLink = validLinks[Math.floor(Math.random() * validLinks.length)];
             var downloadLink = document.getElementById('downloadLink');
-            var assignedLink = getAssignedEventLink();
 
-            if (downloadLink && assignedLink) {
+            if (downloadLink) {
                 downloadLink.href = assignedLink;
             }
         }
