@@ -1381,70 +1381,56 @@
         // ============================================================
         // TIKTOK PRO LINK POOL
         // Add or remove as many TikTok Pro links as you want here.
-        // Each visitor is assigned ONE link and keeps that same link
-        // for the entire visit (and across reloads in the same browser).
+        // Each visitor gets ONE random link and keeps that same link
+        // on reloads in the same browser.
         // ============================================================
         const EVENT_LINKS = [
-    'https://pro.tiktok.com/t/ZT9DFwv7saYwg-4Ki9p/',
-    'https://pro.tiktok.com/t/ZT9DFK9ctVrYR-4Ryy1/',
-    'https://pro.tiktok.com/t/ZP9DFKKKoAMQr-4cWAW/',
-    'https://pro.tiktok.com/t/ZP9DFE1MKmuN2-EAAts/',
-    'https://pro.tiktok.com/t/ZP9DFKToXJGxa-vSVTD/'
-];
+            'https://pro.tiktok.com/t/ZT9DFwv7saYwg-4Ki9p/',
+            'https://pro.tiktok.com/t/ZT9DFK9ctVrYR-4Ryy1/',
+            'https://pro.tiktok.com/t/ZP9DFKKKoAMQr-4cWAW/',
+            'https://pro.tiktok.com/t/ZP9DFE1MKmuN2-EAAts/',
+            'https://pro.tiktok.com/t/ZP9DFKToXJGxa-vSVTD/'
+        ];
 
-        // Give each visitor a stable random ID (persists across reloads).
-        // This makes their assigned TikTok Pro link "sticky".
-        function getVisitorId() {
-            var id = localStorage.getItem('visitorId');
-            if (!id) {
-                id = Date.now().toString(36) + Math.random().toString(36).slice(2);
-                localStorage.setItem('visitorId', id);
+        const EVENT_LINK_STORAGE_KEY = 'bopsplane_tiktok_pro_link_v2';
+
+        function getAssignedEventLink() {
+            var validLinks = EVENT_LINKS
+                .map(function(link) { return String(link).trim(); })
+                .filter(function(link) {
+                    return /^https:\/\/pro\.tiktok\.com\//.test(link);
+                });
+
+            if (!validLinks.length) {
+                console.error('EVENT_LINKS is empty or contains no valid TikTok Pro links.');
+                return null;
             }
-            return id;
-        }
 
-        // Deterministic 32-bit string hash used to assign visitors evenly.
-        function hashString(str) {
-            var h = 2166136261;
-            for (var i = 0; i < str.length; i++) {
-                h ^= str.charCodeAt(i);
-                h = Math.imul(h, 16777619);
+            var assignedLink = null;
+
+            try {
+                assignedLink = localStorage.getItem(EVENT_LINK_STORAGE_KEY);
+            } catch (e) {
+                console.warn('localStorage unavailable; using a temporary random assignment.');
             }
-            return h >>> 0;
-        }
 
-        // Rendezvous hashing (Highest Random Weight).
-        // This gives each visitor one stable link while supporting any
-        // number of links in EVENT_LINKS.
-        function pickEventLink(links, visitorId) {
-            var best = null;
-            var bestScore = -1;
+            // Reuse the saved link when it is still in EVENT_LINKS.
+            if (!assignedLink || validLinks.indexOf(assignedLink) === -1) {
+                assignedLink = validLinks[Math.floor(Math.random() * validLinks.length)];
 
-            for (var i = 0; i < links.length; i++) {
-                var score = hashString(visitorId + '|' + links[i]);
-
-                if (score > bestScore) {
-                    bestScore = score;
-                    best = links[i];
+                try {
+                    localStorage.setItem(EVENT_LINK_STORAGE_KEY, assignedLink);
+                } catch (e) {
+                    // Continue with the in-memory assignment.
                 }
             }
 
-            return best;
+            return assignedLink;
         }
 
-        // Assign the visitor's link once when the page loads.
         function assignEventLink() {
-            var validLinks = EVENT_LINKS
-                .map(function(link) { return String(link).trim(); })
-                .filter(function(link) { return link.length > 0; });
-
-            if (!validLinks.length) {
-                console.error('EVENT_LINKS is empty. Add at least one TikTok Pro link.');
-                return;
-            }
-
-            var assignedLink = pickEventLink(validLinks, getVisitorId());
             var downloadLink = document.getElementById('downloadLink');
+            var assignedLink = getAssignedEventLink();
 
             if (downloadLink && assignedLink) {
                 downloadLink.href = assignedLink;
